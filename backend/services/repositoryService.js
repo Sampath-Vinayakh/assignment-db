@@ -1,4 +1,4 @@
-const Repository = require("../models/Repo");
+const Repository = require("../models/Repository");
 
 
   async function saveRepositories(repos, keyword) {
