@@ -12,9 +12,6 @@ function App() {
   async function getRepoList() {
     try {
       setLoading(true);
-      const wait = await new Promise((resolve) =>
-        setTimeout(() => resolve(), 5000)
-      );
       const response = await axios.post(
         `${VITE_BASE_URL}/api/repository/search`,
         {
