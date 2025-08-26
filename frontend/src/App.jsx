@@ -16,6 +16,9 @@ function App() {
         `${VITE_BASE_URL}/api/repository/search`,
         {
           keyword: search,
+        },
+        {
+          headers: { "Content-Type": "application/json" },
         }
       );
       if (response.status == 200) {
@@ -40,7 +43,9 @@ function App() {
 
   return (
     <>
-      <h1 className="mt-3 text-center text-xl">Search for GITHUB Repositories.</h1>
+      <h1 className="mt-3 text-center text-xl">
+        Search for GITHUB Repositories.
+      </h1>
       <div className="flex flex-col gap-5 justify-center items-center">
         <div className="flex gap-2 w-full md:w-2/3 lg:w-1/3 text-md mt-5 px-2">
           <input

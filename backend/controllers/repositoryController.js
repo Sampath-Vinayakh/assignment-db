@@ -1,6 +1,7 @@
+const { searchRepositories } = require("../services/githubService");
 const { getRepositoriesByKeyword, saveRepositories } = require("../services/repositoryService");
 
-async function searchForRepositories(req,res){
+async function fetchRepositories(req,res){
   try {
     const { keyword, page = 1, fetchFresh = false } = req.body;
     if (!keyword || keyword.trim() === '') {
@@ -23,7 +24,7 @@ async function searchForRepositories(req,res){
       }
     }
 
-    const githubResponse = await searchForRepositories(cleanKeyword, page);
+    const githubResponse = await searchRepositories(cleanKeyword, page);
 
     if (!githubResponse.success) {
       return res.status(githubResponse.status || 500).json({
@@ -61,5 +62,5 @@ async function searchForRepositories(req,res){
 }
 
 module.exports = {
-    searchForRepositories
+    fetchRepositories
 }
